@@ -4,7 +4,8 @@ package model;
 import persistence.Saveable;
 
 import java.io.PrintWriter;
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 
 //a way to store and ID all enemies present in game
@@ -13,10 +14,7 @@ public class Enemies implements Saveable {
     private Integer enemiesSize = 0;
     private Integer mainPlayerPosX;
     private Integer mainPlayerPosY;
-
     private LinkedHashMap<Integer, Enemy> enemies;
-
-    private static final Boolean DEAD = true;
 
     public Enemies() {
         enemies = new LinkedHashMap<>();
@@ -40,22 +38,12 @@ public class Enemies implements Saveable {
         enemiesSize = spawnSize;
     }
 
-    //todo fix this such that it updates all of them at once.
 
     //EFFECT: updates the ememies location
     public void updateEnemies() {
         for (Map.Entry<Integer, Enemy> entry :enemies.entrySet()) {
-            entry.getValue().move();
-        }
-    }
-    //FIXME -Improve this implementation
-
-    //MODIFIES: this
-    //EFFECTS: removes any dead enemy
-    public void removeDead() {
-        for (Map.Entry<Integer, Enemy> entry :enemies.entrySet()) {
-            if (entry.getValue().isDead() == DEAD) {
-                enemies.remove(entry.getKey());
+            entry.getValue().update(mainPlayerPosX, mainPlayerPosY);
+            if (entry.getValue().isDead()) {
                 enemiesSize--;
             }
         }
@@ -65,7 +53,7 @@ public class Enemies implements Saveable {
     public int getNumDead() {
         int count = 0;
         for (Map.Entry<Integer, Enemy> entry :enemies.entrySet()) {
-            if (entry.getValue().isDead() == DEAD) {
+            if (entry.getValue().isDead()) {
                 count++;
             }
         }
@@ -84,9 +72,8 @@ public class Enemies implements Saveable {
 
     //EFFECTS: kills all enemies currently spawned
     public void killAll() {
-        //enemies.clear();
         for (Map.Entry<Integer, Enemy> entry :enemies.entrySet()) {
-            if (entry.getValue().isDead() == !DEAD) {
+            if (!!!entry.getValue().isDead()) {
                 entry.getValue().setHealth(0);
             }
         }

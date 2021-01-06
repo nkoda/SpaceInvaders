@@ -5,16 +5,17 @@ import model.MainPlayer;
 import model.PlayerData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-import java.io.FileNotFoundException;
-import java.io.UnsupportedEncodingException;
-
 import ui.Difficulty;
 import ui.Game;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class WriterTest {
     private static final String TEST_FILE = "./data/data_filesWrite.txt";
@@ -46,10 +47,8 @@ class WriterTest {
             assertEquals(Game.HEIGHT / 2, playerData.get(0).getPositionY());
 
             //Enemy data
-            assertEquals(5, playerData.get(1).getHealth());
-            assertEquals(1, playerData.get(1).getAttack());
-            assertEquals(0, playerData.get(1).getPositionX());
-            assertEquals(0, playerData.get(1).getPositionY());
+            assertEquals(1, playerData.get(1).getHealth());
+            assertEquals(5, playerData.get(1).getAttack());
         } catch (IOException e) {
             fail("IOException should not have been thrown");
         }

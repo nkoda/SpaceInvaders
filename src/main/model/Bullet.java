@@ -10,7 +10,7 @@ public class Bullet {
 
     public static final int SIZE_X = 5;
     public static final int SIZE_Y = 9;
-    private int dy = -2;
+    private int dy = 0;
     private int dx = 0;
     public static final Color COLOR = new Color(224, 202, 60);
 

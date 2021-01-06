@@ -1,13 +1,13 @@
 package model;
 
-import org.junit.jupiter.api.Test;
-import static  org.junit.jupiter.api.Assertions.*;
-import static ui.Difficulty.*;
-
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import ui.Game;
 
 import java.io.File;
-import ui.Game;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static ui.Difficulty.*;
 
 
 public class GameTest {
@@ -21,23 +21,12 @@ public class GameTest {
         testCase2 = new Game(EASY);
     }
 
-//    public void update() {
-//        userPlayer.move();
-//        giveEnemiesUserPlayerLocation();
-//        enemies.updateEnemies();
-//        moveListOfBullets();
-//
-//    }
-
-    //todo save round and score of the game
-
     @Test
     void saveGameTest() {
         File tempFile = new File(GAME_FILE);
         testCase1.saveGame();
         assertTrue(tempFile.exists());
     }
-
 
     @Test
     void testSetDifficulty() {
@@ -61,20 +50,20 @@ public class GameTest {
         assertEquals(0,testCase1.getScore());
         testCase1.newRound();
         testCase1.updateScore();
-        assertEquals(1, testCase1.getRoundNumber());
+        assertEquals(2, testCase1.getRoundNumber());
         assertEquals(0,testCase1.getScore());
         testCase1.getEnemies().killAll();
         testCase1.updateScore();
-        assertEquals(1,testCase1.getRoundNumber());
-        assertEquals(5,testCase1.getScore());
+        assertEquals(3,testCase1.getRoundNumber());
+        assertEquals(10,testCase1.getScore());
         testCase1.newRound();
-        assertEquals(2,testCase1.getRoundNumber());
-        assertEquals(5,testCase1.getScore());
+        assertEquals(4,testCase1.getRoundNumber());
+        assertEquals(10,testCase1.getScore());
         testCase1.updateScore();
-        assertEquals(5,testCase1.getScore());
+        assertEquals(0,testCase1.getScore());
         testCase1.getEnemies().killAll();
         testCase1.updateScore();
-        assertEquals(15,testCase1.getScore());
+        assertEquals(20,testCase1.getScore());
 
     }
 

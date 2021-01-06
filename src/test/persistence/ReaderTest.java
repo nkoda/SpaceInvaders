@@ -32,10 +32,8 @@ class ReaderTest {
                 tempEnemy.setPositionX(playerData.get(i).getPositionX());
                 tempEnemy.setPositionY(playerData.get(i).getPositionY());
 
-                assertEquals(5, tempEnemy.getHealth());
-                assertEquals(1, tempEnemy.getAttack());
-                assertEquals(0, tempEnemy.getPositionX());
-                assertEquals(0, tempEnemy.getPositionY());
+                assertEquals(1, tempEnemy.getHealth());
+                assertEquals(5, tempEnemy.getAttack());
                 enemies.add(tempEnemy);
                 }
             assertEquals(5, enemies.size());

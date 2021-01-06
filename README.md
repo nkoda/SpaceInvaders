@@ -70,9 +70,3 @@ and saving an actual game
 -also note that I left out the associations for the MainMenu method in the ui package as that's legacy code that isn't
 needed to run the game.
 
-
-**thanks!**
-- also if Beriwan, Sam, or Sarah is marking this, thanks for being a great T.A during labs! 
-If any other T.A reads this you guys are great too and thanks for the help on piazza!
-I usually would say this in person but you know :P
-

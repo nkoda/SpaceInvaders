@@ -1,14 +1,15 @@
 package model;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import persistence.Writer;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class EnemiesTest {
@@ -56,13 +57,13 @@ public class EnemiesTest {
         assertEquals(3, enemies1.getNumDead());
     }
 
-    @Test
-    void removeDead() {
-        e1.setHealth(0);
-        enemies1.forceAddEnemy(e1);
-        enemies1.removeDead();
-        assertEquals(0,enemies1.getNumDead());
-    }
+//    @Test
+//    void removeDead() {
+//        e1.setHealth(0);
+//        enemies1.forceAddEnemy(e1);
+//        enemies1.removeDead();
+//        assertEquals(0,enemies1.getNumDead());
+//    }
 
     @Test
     void getEnemiesTest() {

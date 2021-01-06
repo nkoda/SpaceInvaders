@@ -1,31 +1,26 @@
 package ui;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
+import model.Bullet;
+import model.Enemy;
+import model.MainPlayer;
+
+import javax.swing.*;
+import java.awt.*;
 import java.util.Map;
-
-import javax.swing.JPanel;
-
-import model.*;
 
 /*
  * The panel in which the game is rendered.
  */
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel {
-
     private static final String OVER = "Game Over!";
     private static final String REPLAY = "R to replay";
-
     private static final String PAUSED = "Game Paused.";
     private static final String QUITNSAVE = "Press K: Quit and Save";
     private static final String QUIT = "Press L: Quit";
     private static final String CONT = "Press J: Continue Game";
-
     private Game game;
+
     //private GamePauseMenu gamePauseMenu;
 
     // Constructs a game panel
@@ -42,9 +37,7 @@ public class GamePanel extends JPanel {
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
-
         drawGame(graphics);
-
         if (game.gameOver()) {
             gameOverVisual(graphics);
         }
@@ -70,9 +63,6 @@ public class GamePanel extends JPanel {
         graphics.setColor(savedCol);
     }
 
-    //todo
-    // finish implementing drawing of invader
-
     // Draw the invaders
     // modifies: g
     // effects:  draws the invaders onto g
@@ -92,7 +82,6 @@ public class GamePanel extends JPanel {
                 Enemy.SIZE_X, Enemy.SIZE_Y);
         g.setColor(savedCol);
     }
-
 
     // Draws the missiles
     // modifies: g

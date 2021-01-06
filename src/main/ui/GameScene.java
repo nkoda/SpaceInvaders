@@ -1,10 +1,9 @@
 package ui;
 
-import java.awt.*;
-import java.awt.event.*;
-
 import javax.swing.*;
-import javax.swing.Timer;
+import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 //this is where the game window will be drawn
 // model after SpaceInvadersBase's SpaceInvaders
@@ -14,10 +13,6 @@ public class GameScene extends JFrame {
     private Game game;
     private GamePanel gamePanel;
     private ScorePanel scorePanel;
-
-    private Integer mousePosX;
-    private Integer mousePosY;
-
 
     public GameScene(Game game) {
         super("Astroid Shooters");

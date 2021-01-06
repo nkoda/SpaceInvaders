@@ -1,8 +1,9 @@
 package model;
 
-import persistence.*;
+import persistence.Reader;
+import persistence.Saveable;
+
 import java.io.PrintWriter;
-import ui.Game;
 
 //A model for any Player classes
 public abstract class Player implements Saveable {
@@ -26,7 +27,7 @@ public abstract class Player implements Saveable {
     protected abstract void spawnLocation();
 
     // modifies: this
-    // effects: moves the
+    // effects: moves the player
     public abstract void move();
 
     //REQUIRES: an integer greater than 0
@@ -37,12 +38,11 @@ public abstract class Player implements Saveable {
 
     //EFFECTS: returns true if the player is dead, false if alive
     public boolean isDead() {
-        boolean returnValue = false;
+        return health <= 0;
+    }
 
-        if (health <= 0) {
-            returnValue = true;
-        }
-        return returnValue;
+    public void isDeadBehaviour() {
+
     }
 
     @Override
@@ -84,6 +84,11 @@ public abstract class Player implements Saveable {
         directionY = UP;
     }
 
+    //effects: this
+    //modifies: health
+    // decrement one health point from player
+    public void decrementHealth() { health--; }
+
     // modifies: this
     // effects: set player direction down
     public void moveDown() {
@@ -113,5 +118,6 @@ public abstract class Player implements Saveable {
     public Integer getPositionY() {
         return positionY;
     }
+
 
 }

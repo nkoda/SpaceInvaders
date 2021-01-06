@@ -1,19 +1,17 @@
 package model;
 
-import java.awt.*;
 import ui.Game;
+
+import java.awt.*;
 
 //MainPlayer is a player played by the user
 public class MainPlayer extends Player {
-    private static final Integer ATTACK_MAGNITUDE = 5;
-    private static final Integer HEALTH = 20;
-
     public static final Color COLOR = new Color(44, 165, 141);
     public static final int SIZE_X = 15;
     public static final int SIZE_Y = 8;
+    private static final Integer HEALTH = 20;
 
     public MainPlayer() {
-        attack = ATTACK_MAGNITUDE;
         health = HEALTH;
         spawnLocation();
     }
@@ -28,9 +26,11 @@ public class MainPlayer extends Player {
 
     @Override
     public void move() {
-        this.positionX += directionX * DX;
-        this.positionY += directionY * DY;
-        handleBoundary();
+        if (!isDead()) {
+            this.positionX += directionX * DX;
+            this.positionY += directionY * DY;
+            handleBoundary();
+        }
     }
 
     // Constrains mainPlayer so that it doesn't travel of sides of screen
